@@ -1,0 +1,7 @@
+[build]
+# Just plain old shell command. You could use `make` as well.
+cmd = "go build -o ./tmp/main ./cmd"
+# Binary file yields from `cmd`.
+bin = "./cmd ."
+# Customize binary.
+full_bin = "./tmp/main ."   

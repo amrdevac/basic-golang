@@ -1,0 +1,5 @@
+package loket
+
+func GetListLoket() {
+
+}
