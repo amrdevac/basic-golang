@@ -19,6 +19,7 @@ func ValidationMessage(reflectTags reflect.StructField, currentError validator.F
 	validation["max"] = "This field must be at max __ characters long."
 	validation["noWhiteSpace"] = "This field must not containing any whitespace."
 	validation["noDot"] = "This field must not containing any Dot."
+	validation["oneof"] = "This filed value must be one of __"
 
 	for _, validateType := range validateValue {
 		fmt.Println(currentError.Tag())

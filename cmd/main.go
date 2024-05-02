@@ -3,7 +3,6 @@ package main
 import (
 	"antrian/cmd/loket"
 	"antrian/utils"
-	"fmt"
 	"net/http"
 	"time"
 
@@ -24,23 +23,10 @@ func main() {
 	// db := database.DBMySQLConnecting()
 
 	router := gin.Default()
-	router.Use(gin.LoggerWithFormatter(func(param gin.LogFormatterParams) string {
-		// your custom format
-		return fmt.Sprintf("%s - [%s] \"%s %s %s %d %s \"%s\" %s\"\n",
-			param.ClientIP,
-			param.TimeStamp.Format(time.RFC1123),
-			param.Method,
-			param.Path,
-			param.Request.Proto,
-			param.StatusCode,
-			param.Latency,
-			param.Request.UserAgent(),
-			param.ErrorMessage,
-		)
-	}))
 	// route.Use(InjectDB(db))
 	router.GET("/loket", loket.Get)
 	router.POST("/loket", loket.CreateNew)
+	router.PUT("/loket/status", loket.UpdateStatus)
 	router.GET("/ping", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"message": "pong",

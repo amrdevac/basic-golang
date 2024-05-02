@@ -1,16 +1,21 @@
 package loket
 
+import "time"
+
 type Create struct {
-	NamaLoket string `validate:"required,min=12,max=13,alphanum"  binding:"required" json:"nama_loket"`
-	Bambang   string `validate:"required,noDot,noWhiteSpace" binding:"required" json:"ini_bambang"`
+	NamaLoket   string    ` validate:"required" json:"nama_loket"`
+	StatusLoket int       ` json:"status_loket"`
+	CreatedAt   time.Time ` json:"created_at"`
 }
 
-// type User struct {
-// 	FirstName      string     `validate:"required"`
-// 	LastName       string     `validate:"required"`
-// 	Age            uint8      `validate:"gte=0,lte=130"`
-// 	Email          string     `validate:"required,email"`
-// 	Gender         string     `validate:"oneof=male female prefer_not_to"`
-// 	FavouriteColor string     `validate:"iscolor"`                // alias for 'hexcolor|rgb|rgba|hsl|hsla'
-// 	Addresses      []*Address `validate:"required,dive,required"` // a person can have a home and cottage...
-// }
+type UpdateDataStatus struct {
+	IDLoket     int    `validate:"required"  json:"id_loket"`
+	StatusLoket string `validate:"required"  json:"status_loket"`
+}
+
+type FilterGetList struct {
+	NamaLoket string `json:"nama_loket"`
+	Status    string `json:"status"`
+	Offset    int    `json:"offset"`
+	Limit     int    `json:"limit"`
+}
